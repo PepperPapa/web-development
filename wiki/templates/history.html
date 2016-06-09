@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block controls %}
+  {% if user %}
+    <a href="/_edit{{path}}" class="gray-link">edit</a>
+    |
+  {% endif %}
+  <a href="{{path}}" class="gray-link">view</a>
+{% endblock %}
+
+{% block content %}
+  <table class="history-table">
+    {% for p, rowstyle in gray_style(posts) %}
+      <tr class="rowstyle">
+        <td class="data-cell">
+          {{ p.last_modified.strftime("%c") }}
+        </td>
+        
+        <td class="content-cell">
+          {{ p.content[:100] }}
+        </td>
+        
+        <td class="link-cell">
+          <a href="{{path}}?v={{p.key().id()}}" class="gray-link">view</a>
+        </td>
+        
+        {% if user %}
+          <td class="link-cel">
+            <a href="/_edit{{path}}?v={{p.key().id()}}" class="gray-link">edit</a>
+          </td>
+        {% endif %}
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

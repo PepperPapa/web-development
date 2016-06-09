@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wiki Demo</title>
+  <link rel="stylesheet" href="../static/main.css">
+</head>
+<body>
+  <div class="header">
+    <div class="controls">
+      {% if user %}
+        {{user.name}} (<a href="/logout" class="gray-link">logout</a>)
+      {% else %}
+        <a href="/login" class="gray-link">login</a>
+        |
+        <a href="/signup" class="gray-link">signup</a>
+      {% endif %}
+    </div>
+    <div class="controls">
+      {% block controls %}
+      {% endblock %}
+    </div>
+    <div class="clear">
+      
+    </div>
+  </div>
+  
+  <div class="content">
+    {% block content %}
+    {% endblock %}
+  </div>
+</body>
+</html>

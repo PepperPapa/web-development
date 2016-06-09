@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/static/main.css">
+  <meta charset="UTF-8">
+  <title>PepperPapa's Blog</title>
+</head>
+<body>
+  <header>
+    <a class="main-title" href="/blog">
+      <h1>PepperPapa's Blog</h1>
+    </a>
+    
+    <div class="login-area">
+      {% if user %}
+        {{user.name}} (<a class="login-link" href="/logout">logout</a>)
+      {% else %}
+        <a href="/login" class="login-link">login</a>
+        |
+        <a href="/signup" class="login-link">signup</a>
+      {% endif %}
+    </div>
+  </header>
+  
+  <main>
+    <div id="content">
+      {% block content %}
+      {% endblock %}
+    </div>
+  </main>
+</body>
+</html>
